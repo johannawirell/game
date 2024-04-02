@@ -5,8 +5,13 @@ import { GameEnity } from '../controller/GameEnity';
 export class Terrain extends GameEnity {
     constructor() {
         super();
-       
-        // this.load(TERRAIN_MODEL_PATH, 'Terrain');
+
+        const geometry = new THREE.PlaneGeometry(window.innerWidth * 2, window.innerHeight * 2);
+        const material = new THREE.MeshStandardMaterial({ color: 0x808080 });
+        this.mesh = new THREE.Mesh(geometry, material);
+        this.mesh.rotation.x = -Math.PI / 2; 
+        this.mesh.position.y = 10;
+    
 
     }
 
