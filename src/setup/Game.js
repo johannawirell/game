@@ -21,6 +21,7 @@ export class Game {
 
     animate() {
         requestAnimationFrame(() => this.animate(this.renderer));
+        // console.log(this.camera.position)
         this.renderer.render(this.scene, this.camera);
     }
 

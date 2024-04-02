@@ -33,9 +33,9 @@ export class Player extends GameEnity {
 
     position(model) {
        
-        model.scale.set(0.01, 0.01, 0.01); 
+        model.scale.set(3, 3, 3); 
 
-        model.position.set(3, 0, 5)
+        model.position.set(0, -4, 0)
         
     }
 }

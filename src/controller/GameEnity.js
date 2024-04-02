@@ -21,19 +21,15 @@ export class GameEnity {
             })
             this.position(model);
             this.scene.add(model);
+            this.gltfAnimations = gltf.animations;
+        
+            this.mixer = new THREE.AnimationMixer(model);
+            this.animationsMap = new Map();
+
+            this.gltfAnimations.filter(a => a != 'TPose').forEach(a => {
+                this.animationsMap.set(a.name, this.mixer.clipAction(a))
+            })
         }
-        // await new Promise(resolve => {
-        //     new GLTFLoader().load(
-        //         path,gltf => {
-        //             let model = gltf.scene;
-        //             console.log(model)
-        //             resolve();
-        //         },
-        //         undefined,
-        //         error => console.error(`Error when loading ${name}: ${error}`)
-        //     );
-        // });
-        // this.isDoneLoading = true;
     )}
     
     
