@@ -6,12 +6,12 @@ export class Terrain extends GameEnity {
     constructor() {
         super();
 
-        const geometry = new THREE.PlaneGeometry(window.innerWidth * 2, window.innerHeight * 2);
+        const geometry = new THREE.PlaneGeometry(100, 100);
         const material = new THREE.MeshStandardMaterial({ color: 0x808080 });
         this.mesh = new THREE.Mesh(geometry, material);
-        this.mesh.rotation.x = -Math.PI / 2; 
-        this.mesh.position.y = 10;
-    
+        this.mesh.rotation.x = - Math.PI / 2
+        this.mesh.position.set(0, -5, 0)
+        this.mesh.name = 'plane';
 
     }
 

@@ -11,18 +11,19 @@ export class GameEnity {
     }
 
     async load(path, name) {
-        await new Promise(resolve => {
-            new GLTFLoader().load(
-                path,gltf => {
-                    let model = gltf.scene;
-                    console.log(model)
-                    resolve();
-                },
-                undefined,
-                error => console.error(`Error when loading ${name}: ${error}`)
-            );
-        });
-        this.isDoneLoading = true;
+        console.log('load')
+        // await new Promise(resolve => {
+        //     new GLTFLoader().load(
+        //         path,gltf => {
+        //             let model = gltf.scene;
+        //             console.log(model)
+        //             resolve();
+        //         },
+        //         undefined,
+        //         error => console.error(`Error when loading ${name}: ${error}`)
+        //     );
+        // });
+        // this.isDoneLoading = true;
     }
     
     

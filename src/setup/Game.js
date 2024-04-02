@@ -2,7 +2,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Scene } from './Scene.js'
 import { Camera } from './Camera.js'
-import { Player } from '../controller/player.js';
+import { Player } from '../controller/Player.js';
+import { Terrain } from './Terrain.js'
 // import Stats from 'three/addons/libs/stats.module.js';
 
 
@@ -11,6 +12,7 @@ export class Game {
         this.scene = this.addScene();
         this.camera = this.addCamera();
         this.player = this.addPlayer();
+        this.terrain = this.addTerrain();
         this.addRenderer(); 
         this.addOrbitController();       
         this.animate();
@@ -34,13 +36,23 @@ export class Game {
     }
     
     addPlayer() {
-        // const player = new Player(this.camera);
-        // player.addToScene(this.scene);
+        const player = new Player(this.camera);
+        player.addToScene(this.scene);
+        return player;
+    }
+
+    addTerrain() {
+        const terrain = new Terrain();
+        terrain.addToScene(this.scene);
+        return terrain;
     }
 
     addOrbitController() {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-        this.controls.target.set(0, 0, 0); // Målposition för kameran
+        // this.controls.enableDamping = true;
+        // this.controls.minDistance = 5;
+        // this.controls.maxDistance = 15;
+        
     }
 
     addRenderer() {

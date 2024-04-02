@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { Terrain } from './Terrain.js'
 
 const SKYBOX = [
     '../../img/skybox/posx.jpg',
@@ -16,16 +15,7 @@ export class Scene {
         this.textureLoader = new THREE.CubeTextureLoader();
         const texture = this.textureLoader.load(SKYBOX);
         this.scene.background = texture
-        // this.scene.background = new THREE.Color(0xF02050);
-        // this.scene.fog = new THREE.Fog(0xF02050, 1, 26);
-
         this.addLights();
-        this.addTerrain();
-    }
-
-    addTerrain() {
-        const terrain = new Terrain();
-        // terrain.addToScene(this.scene);
     }
 
     addLights() {
