@@ -1,9 +1,21 @@
 import * as THREE from 'three';
 import { Terrain } from './Terrain.js'
 
+const SKYBOX = [
+    '../../img/skybox/posx.jpg',
+    '../../img/skybox/negx.jpg',
+    '../../img/skybox/posy.jpg',
+    '../../img/skybox/negy.jpg',
+    '../../img/skybox/posz.jpg',
+    '../../img/skybox/negz.jpg',  
+]
+
 export class Scene {
     constructor() {
         this.scene = new THREE.Scene();
+        this.textureLoader = new THREE.CubeTextureLoader();
+        const texture = this.textureLoader.load(SKYBOX);
+        this.scene.background = texture
         // this.scene.background = new THREE.Color(0xF02050);
         // this.scene.fog = new THREE.Fog(0xF02050, 1, 26);
 
@@ -12,7 +24,8 @@ export class Scene {
     }
 
     addTerrain() {
-        console.log('add terrain')
+        const terrain = new Terrain();
+        // terrain.addToScene(this.scene);
     }
 
     addLights() {

@@ -32,8 +32,8 @@ export class Game {
     }
     
     addPlayer() {
-        const player = new Player(this.camera);
-        player.addToScene(this.scene);
+        // const player = new Player(this.camera);
+        // player.addToScene(this.scene);
     }
 
     addRenderer() {
