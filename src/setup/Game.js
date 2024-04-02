@@ -1,14 +1,15 @@
 import * as THREE from 'three';
 import { Scene } from './Scene.js'
 import { Camera } from './Camera.js'
-import { Character } from '../controller/character.js';
+import { Player } from '../controller/player.js';
+// import Stats from 'three/addons/libs/stats.module.js';
 
 
 export class Game {
     constructor() {
         this.scene = this.addScene();
         this.camera = this.addCamera();
-        this.character = this.addCharacter();
+        this.player = this.addPlayer();
         this.addRenderer();        
         this.animate();
         this.addEventListener();
@@ -30,9 +31,9 @@ export class Game {
         return camera.get();
     }
     
-    addCharacter() {
-        const character = new Character(this.camera);
-        character.addToScene(this.scene);
+    addPlayer() {
+        const player = new Player(this.camera);
+        player.addToScene(this.scene);
     }
 
     addRenderer() {

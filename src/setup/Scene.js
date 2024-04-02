@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { Terrain } from './Terrain.js'
 
 export class Scene {
     constructor() {
@@ -7,6 +8,11 @@ export class Scene {
         // this.scene.fog = new THREE.Fog(0xF02050, 1, 26);
 
         this.addLights();
+        this.addTerrain();
+    }
+
+    addTerrain() {
+        console.log('add terrain')
     }
 
     addLights() {
