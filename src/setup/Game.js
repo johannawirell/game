@@ -8,14 +8,7 @@ export class Game {
         this.scene = this.addScene();
         this.camera = this.addCamera();
         this.addRenderer();
-        
-
-        // Skapa en karaktär
-        // this.character = new Character();
-        // this.character.addToScene(this.scene);
-
-        // Positionera kameran
-        this.camera.position.z = 5;
+        this.addEventListener();
 
         // Starta loopen
         this.animate();
@@ -42,4 +35,13 @@ export class Game {
         
         this.renderer.render(this.scene, this.camera);
     }
+
+    addEventListener() {
+        window.addEventListener('resize', () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    }
+    
 }
