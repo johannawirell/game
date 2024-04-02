@@ -5,19 +5,10 @@ import { Controller } from './Controller.js';
 const PATH = '../../assets/player/player.glb';
 
 export class Player extends GameEnity {
-    constructor(camera) {
-        super();
-        this.camera = camera;
+    constructor(params) {
+        super(params);
         this.controller = new Controller(this);
         this.loadPlayer();
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-        this.mesh = new THREE.Mesh(geometry, material);
-        this.mesh.castShadow = true;
-        this.mesh.receiveShadow = true;
-        this.mesh.name = 'player';
-
-        // this.position(this.mesh);
     }
 
     walk(action) {
@@ -34,8 +25,6 @@ export class Player extends GameEnity {
 
     async loadPlayer() {
         await this.load(PATH, 'Player')
-            // .then(r => console.log('hejhopp ' + r))
-            // .catch(err => console.log('error: ' + err))
     }
 
     addToScene(scene) {
@@ -43,7 +32,10 @@ export class Player extends GameEnity {
     }
 
     position(model) {
-        // Placera objektet på marknivån
-        // model.position.y = -10;
+       
+        model.scale.set(0.01, 0.01, 0.01); 
+
+        model.position.set(3, 0, 5)
+        
     }
 }

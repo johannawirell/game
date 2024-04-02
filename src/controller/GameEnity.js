@@ -2,16 +2,26 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 export class GameEnity {
-    constructor() {
-
+    constructor(params) {
+        this.camera = params.camera;
+        this.scene = params.scene;
     }
 
-    addToScene(scene) {
-        scene.add(this.mesh);
-    }
+    
 
     async load(path, name) {
-        console.log('load')
+        new GLTFLoader().load(path, gltf => {
+            const model = gltf.scene;
+            model.name = name;
+          
+            model.traverse(obj => {
+                if (obj.isMesh) {
+                    obj.castShadow = true;
+                } 
+            })
+            this.position(model);
+            this.scene.add(model);
+        }
         // await new Promise(resolve => {
         //     new GLTFLoader().load(
         //         path,gltf => {
@@ -24,7 +34,7 @@ export class GameEnity {
         //     );
         // });
         // this.isDoneLoading = true;
-    }
+    )}
     
     
     

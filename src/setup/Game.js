@@ -36,23 +36,27 @@ export class Game {
     }
     
     addPlayer() {
-        const player = new Player(this.camera);
-        player.addToScene(this.scene);
+        const player = new Player({
+            camera: this.camera,
+            scene: this.scene
+        });
+        // player.addToScene(this.scene);
         return player;
     }
 
     addTerrain() {
-        const terrain = new Terrain();
-        terrain.addToScene(this.scene);
+        const terrain = new Terrain({
+            camera: this.camera,
+            scene: this.scene
+        });
+
         return terrain;
     }
 
     addOrbitController() {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-        // this.controls.enableDamping = true;
-        // this.controls.minDistance = 5;
-        // this.controls.maxDistance = 15;
-        
+        this.controls.minDistance = 5;
+        this.controls.maxDistance = 15;
     }
 
     addRenderer() {
