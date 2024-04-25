@@ -4,13 +4,15 @@ import { Scene } from './Scene.js';
 import { Camera } from './Camera.js';
 import { Sky } from './Sky.js';
 import { Terrain } from './Terrain.js';
+import { Player } from '../player/Player.js';
 
 export class Game {
     constructor() {
         this.scene = this.addScene();
         this.camera = this.addCamera();
-        this.terrain = this.addTerrain();
         this.sky = this.addSky();
+        this.terrain = this.addTerrain();
+        this.player = this.addPlayer();
         this.addRenderer(); 
         this.addOrbitController();       
         this.animate();
@@ -32,6 +34,12 @@ export class Game {
         camera.addToScene(this.scene);
         return camera.get();
     }
+
+    addSky() {
+        const sky = new Sky();
+        sky.addToScene(this.scene);
+        return sky;
+    }
     
     addTerrain() {
        const t = new Terrain();
@@ -39,11 +47,12 @@ export class Game {
        return t;
     }
 
-    addSky() {
-        const sky = new Sky();
-        sky.addToScene(this.scene);
-        return sky;
+    addPlayer() {
+        const player = new Player(this.terrain);
+        player.addToScene(this.scene);
+        return player;
     }
+   
 
     addOrbitController() {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
