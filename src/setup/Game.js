@@ -2,17 +2,13 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Scene } from './Scene.js'
 import { Camera } from './Camera.js'
-import { Player } from '../controller/Player.js';
-import { Terrain } from './Terrain.js'
-// import Stats from 'three/addons/libs/stats.module.js';
-
 
 export class Game {
     constructor() {
         this.scene = this.addScene();
         this.camera = this.addCamera();
         this.player = this.addPlayer();
-        this.terrain = this.addTerrain();
+        // this.terrain = this.addTerrain();
         this.addRenderer(); 
         this.addOrbitController();       
         this.animate();
@@ -21,7 +17,6 @@ export class Game {
 
     animate() {
         requestAnimationFrame(() => this.animate(this.renderer));
-        // console.log(this.camera.position)
         this.renderer.render(this.scene, this.camera);
     }
 
@@ -37,21 +32,11 @@ export class Game {
     }
     
     addPlayer() {
-        const player = new Player({
-            camera: this.camera,
-            scene: this.scene
-        });
-        // player.addToScene(this.scene);
-        return player;
+       
     }
 
     addTerrain() {
-        const terrain = new Terrain({
-            camera: this.camera,
-            scene: this.scene
-        });
-
-        return terrain;
+      
     }
 
     addOrbitController() {

@@ -12,9 +12,6 @@ const SKYBOX = [
 export class Scene {
     constructor() {
         this.scene = new THREE.Scene();
-        this.textureLoader = new THREE.CubeTextureLoader();
-        const texture = this.textureLoader.load(SKYBOX);
-        this.scene.background = texture
         this.addLights();
     }
 
