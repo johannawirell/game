@@ -1,14 +1,5 @@
 import * as THREE from 'three';
 
-const SKYBOX = [
-    '../../img/skybox/posx.jpg',
-    '../../img/skybox/negx.jpg',
-    '../../img/skybox/posy.jpg',
-    '../../img/skybox/negy.jpg',
-    '../../img/skybox/posz.jpg',
-    '../../img/skybox/negz.jpg',  
-]
-
 export class Scene {
     constructor() {
         this.scene = new THREE.Scene();

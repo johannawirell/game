@@ -1,14 +1,16 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Scene } from './Scene.js'
-import { Camera } from './Camera.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { Scene } from './Scene.js';
+import { Camera } from './Camera.js';
+import { Sky } from './Sky.js';
+import { Terrain } from './Terrain.js';
 
 export class Game {
     constructor() {
         this.scene = this.addScene();
         this.camera = this.addCamera();
-        this.player = this.addPlayer();
-        // this.terrain = this.addTerrain();
+        this.terrain = this.addTerrain();
+        this.sky = this.addSky();
         this.addRenderer(); 
         this.addOrbitController();       
         this.animate();
@@ -31,12 +33,16 @@ export class Game {
         return camera.get();
     }
     
-    addPlayer() {
-       
+    addTerrain() {
+       const t = new Terrain();
+       t.addToScene(this.scene);
+       return t;
     }
 
-    addTerrain() {
-      
+    addSky() {
+        const sky = new Sky();
+        sky.addToScene(this.scene);
+        return sky;
     }
 
     addOrbitController() {
